@@ -1,4 +1,7 @@
-package br.com.felipesoarestech.Modelos;
+package br.com.felipesoarestech.modelos;
+
+import java.util.Objects;
+
 public class Veiculo {
     private String marca;
     private String modelo;
@@ -32,20 +35,27 @@ public class Veiculo {
         this.placa = placa;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Veiculo veiculo)) return false;
-
-        return getPlaca().equals(veiculo.getPlaca());
-    }
+    
+    
 
     @Override
-    public int hashCode() {
-        return getPlaca().hashCode();
-    }
+	public int hashCode() {
+		return Objects.hash(placa);
+	}
 
-    public String getMarca() {
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Veiculo other = (Veiculo) obj;
+		return Objects.equals(placa, other.placa);
+	}
+
+	public String getMarca() {
         return marca;
     }
 
